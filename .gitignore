@@ -23,6 +23,9 @@ _testmain.go
 
 # Nix
 /result
+# direnv
+/.envrc
+/.direnv/
 # Project specific
 cover
 /_*
