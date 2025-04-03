@@ -36,6 +36,8 @@ func Kind(v any) string {
 		return "list"
 	case Map:
 		return "map"
+	case Coupling:
+		return "coupling"
 	case Kinder:
 		return v.Kind()
 	default:

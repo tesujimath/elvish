@@ -56,6 +56,9 @@ func init() {
 		"to-lines":      toLines,
 		"to-json":       toJSON,
 		"to-terminated": toTerminated,
+
+		// First-class IO ports using `Coupling`s
+		"make-coupling": makeCoupling,
 	})
 }
 
@@ -485,4 +488,14 @@ func toJSON(fm *Frame, inputs Inputs) error {
 		errEncode = encoder.Encode(v)
 	})
 	return errEncode
+}
+
+func makeCoupling(fm *Frame, args ...any) error {
+	out := fm.ValueOutput()
+
+	if len(args) > 0 {
+		return errs.ArityMismatch{What: "arguments", ValidLow: 0, ValidHigh: 0, Actual: len(args)}
+	}
+
+	return out.Put(vals.NewCoupling())
 }

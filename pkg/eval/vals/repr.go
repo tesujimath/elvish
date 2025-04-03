@@ -67,6 +67,8 @@ func Repr(v any, indent int) string {
 		return b.String()
 	case Map:
 		return reprMap(v.Iterator(), v.Len(), indent)
+	case *Coupling:
+		return "(make-coupling)"
 	case Reprer:
 		return v.Repr(indent)
 	case PseudoMap:
